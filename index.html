@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sanjay Ragavan R | App Developer & ECE Scholar</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-gradient: radial-gradient(circle at 50% 0%, #0f172a 0%, #07090e 100%);
+      --card-bg: rgba(15, 23, 42, 0.65);
+      --card-hover: rgba(30, 41, 59, 0.85);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(16, 185, 129, 0.4);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --accent: #10b981;
+      --accent-glow: rgba(16, 185, 129, 0.25);
+      --accent-secondary: #06b6d4;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #07090e;
+      background-image: var(--bg-gradient);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navbar */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(7, 9, 14, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      padding: 18px 0;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .brand span {
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--accent);
+    }
+
+    .btn-nav {
+      background: linear-gradient(135deg, #10b981, #06b6d4);
+      color: #000;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-nav:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 170px 0 100px 0;
+      position: relative;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 30px;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    .hero-heading {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .highlight-text {
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-bio {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 650px;
+      margin-bottom: 36px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-main {
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      color: #050811;
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px var(--accent-glow);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-primary);
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: all 0.25s ease;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      background: rgba(16, 185, 129, 0.05);
+    }
+
+    /* Sections */
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-header {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-top: 6px;
+    }
+
+    /* Cards & Grids */
+    .glass-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass-card:hover {
+      background: var(--card-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr;
+      gap: 28px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    /* Tags */
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* Quick Links */
+    .quick-link-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      transition: all 0.2s;
+    }
+
+    .quick-link-item:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(16, 185, 129, 0.05);
+    }
+
+    /* Education Cards */
+    .edu-item {
+      position: relative;
+      padding-left: 20px;
+      border-left: 2px solid var(--border);
+      margin-bottom: 24px;
+    }
+
+    .edu-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    .edu-item h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .edu-item p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Contact Box */
+    .contact-card {
+      text-align: center;
+      padding: 50px 20px;
+      background: linear-gradient(180deg, rgba(16, 185, 129, 0.05) 0%, rgba(15, 23, 42, 0.6) 100%);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: #0f172a;
+      border: 1px solid var(--border-hover);
+      border-radius: 16px;
+      max-width: 500px;
+      width: 100%;
+      padding: 32px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    @media (max-width: 768px) {
+      .hero-heading { font-size: 2.5rem; }
+      .about-layout { grid-template-columns: 1fr; }
+      .nav-menu { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#hero" class="brand">Sanjay<span>Ragavan</span></a>
+      <nav class="nav-menu">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#certifications" class="nav-link">Certificates</a>
+      </nav>
+      <a href="mailto:sanjayragavan124@gmail.com" class="btn-nav">Contact Me</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="container">
+      <div class="badge">
+        <span class="badge-dot"></span> App Developer & ECE Scholar
+      </div>
+      <h1 class="hero-heading">
+        <span class="gradient-text">Engineering Smart</span><br>
+        <span class="highlight-text">Mobile & IoT Applications.</span>
+      </h1>
+      <p class="hero-bio">
+        Hi, I'm <strong>Sanjay Ragavan R</strong>. Electronics and Communication Engineering student specialized in Flutter mobile apps, embedded hardware sensors, and full-stack solutions.
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn-main">Explore Projects ↗</a>
+        <a href="mailto:sanjayragavan124@gmail.com" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-layout">
+        <div class="glass-card">
+          <div class="section-header" style="margin-bottom: 16px;">
+            <h2 class="section-title">About Me</h2>
+          </div>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">
+            I am a student pursuing Electronics and Communication Engineering at VSB College of Engineering Technical Campus. My core technical focus centers on cross-platform application development with Flutter, microcontroller sensor networks, and building robust database backends.
+          </p>
+          <div class="pills">
+            <span class="pill">Flutter & Dart</span>
+            <span class="pill">Embedded Systems</span>
+            <span class="pill">SQLite / Databases</span>
+            <span class="pill">AI Integration</span>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <h3 style="font-size: 1.1rem; margin-bottom: 16px;">Quick Connect</h3>
+          <a href="https://share.google/04F8yQRVWUoQxmOXF" target="_blank" class="quick-link-item">
+            <span>GitHub</span> ↗
+          </a>
+          <a href="https://share.google/UekjLrupTutk6ksvC" target="_blank" class="quick-link-item">
+            <span>LinkedIn</span> ↗
+          </a>
+          <a href="https://share.google/XOWCYIAIXt0vhmtVo" target="_blank" class="quick-link-item">
+            <span>LeetCode</span> ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Skills Section -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-subtitle">Programming languages, tools, and platforms I work with.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="glass-card">
+          <h3 style="font-size: 1.1rem; color: var(--accent);">Languages</h3>
+          <div class="pills">
+            <span class="pill">C</span>
+            <span class="pill">C++</span>
+            <span class="pill">Python</span>
+            <span class="pill">Java</span>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <h3 style="font-size: 1.1rem; color: var(--accent-secondary);">Frameworks & Tech</h3>
+          <div class="pills">
+            <span class="pill">Flutter</span>
+            <span class="pill">Vercel</span>
+            <span class="pill">Git / GitHub</span>
+            <span class="pill">VS Code</span>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <h3 style="font-size: 1.1rem; color: #a855f7;">AI Studio & Tools</h3>
+          <div class="pills">
+            <span class="pill">Google AI Studio</span>
+            <span class="pill">ChatGPT</span>
+            <span class="pill">Claude</span>
+            <span class="pill">Gemini</span>
+            <span class="pill">Arena AI</span>
+            <span class="pill">Kie AI</span>
+            <span class="pill">Emergent</span>
+            <span class="pill">Antigravity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-subtitle">Mobile apps and IoT security systems I have built.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="glass-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+          <div>
+            <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Construction Accounting App</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+              Bilingual mobile app for contractors to manage daily worker attendance, material expenses, wage records, and offline financial logs.
+            </p>
+            <div class="pills">
+              <span class="pill">Flutter</span>
+              <span class="pill">Dart</span>
+              <span class="pill">Node.js</span>
+              <span class="pill">SQLite</span>
+            </div>
+          </div>
+          <button onclick="openModal('accounting')" class="btn-outline" style="width: 100%; margin-top: 20px; cursor: pointer;">View Project Details</button>
+        </div>
+
+        <div class="glass-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+          <div>
+            <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Smart Security Helmet</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+              IoT safety helmet equipped with impact sensors, GPS tracking, and automated emergency alert dispatch system for high-risk workers.
+            </p>
+            <div class="pills">
+              <span class="pill">Embedded C</span>
+              <span class="pill">Hardware Sensors</span>
+              <span class="pill">GPS / GSM</span>
+            </div>
+          </div>
+          <button onclick="openModal('helmet')" class="btn-outline" style="width: 100%; margin-top: 20px; cursor: pointer;">View Project Details</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Education</h2>
+      </div>
+
+      <div class="glass-card">
+        <div class="edu-item">
+          <h4>Electronics and Communication Engineering</h4>
+          <p>VSB College of Engineering Technical Campus</p>
+        </div>
+
+        <div class="edu-item" style="margin-bottom: 0;">
+          <h4>Secondary School Leaving Certificate (SSLC)</h4>
+          <p>Government Higher Secondary School, T. Ayyankottai</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Course Completion Certificates</h2>
+        <p class="section-subtitle">Online verified certifications and technical training.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="glass-card">
+          <h4 style="font-size: 1rem; margin-bottom: 4px;">Learning Java 9 - Databases & Multithreading</h4>
+          <p style="color: var(--accent); font-size: 0.8rem; font-weight: 600;">Infosys Springboard</p>
+        </div>
+
+        <div class="glass-card">
+          <h4 style="font-size: 1rem; margin-bottom: 4px;">Fundamentals of IoT Security</h4>
+          <p style="color: var(--accent); font-size: 0.8rem; font-weight: 600;">Infosys Springboard</p>
+        </div>
+
+        <div class="glass-card">
+          <h4 style="font-size: 1rem; margin-bottom: 4px;">Generative AI</h4>
+          <p style="color: var(--accent-secondary); font-size: 0.8rem; font-weight: 600;">Cursa Platform</p>
+        </div>
+
+        <div class="glass-card">
+          <h4 style="font-size: 1rem; margin-bottom: 4px;">Java Object Oriented Programming</h4>
+          <p style="color: var(--accent-secondary); font-size: 0.8rem; font-weight: 600;">Cursa Platform</p>
+        </div>
+
+        <div class="glass-card">
+          <h4 style="font-size: 1rem; margin-bottom: 4px;">Python Programming</h4>
+          <p style="color: var(--accent-secondary); font-size: 0.8rem; font-weight: 600;">Cursa Platform</p>
+        </div>
+
+        <div class="glass-card">
+          <h4 style="font-size: 1rem; margin-bottom: 4px;">Machine Learning for Complete Beginners</h4>
+          <p style="color: var(--accent-secondary); font-size: 0.8rem; font-weight: 600;">Cursa Platform</p>
+        </div>
+
+        <div class="glass-card">
+          <h4 style="font-size: 1rem; margin-bottom: 4px;">Probability for Machine Learning</h4>
+          <p style="color: var(--accent-secondary); font-size: 0.8rem; font-weight: 600;">Cursa Platform</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="contact-card">
+        <h2 class="section-title" style="margin-bottom: 12px;">Let's Work Together</h2>
+        <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto 28px auto;">
+          Open for internship opportunities, mobile application projects, and technical collaborations.
+        </p>
+        <a href="mailto:sanjayragavan124@gmail.com" class="btn-main">Send Me an Email ✉</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Sanjay Ragavan R • Built with HTML, CSS & JavaScript</p>
+  </footer>
+
+  <!-- Modal -->
+  <div id="modalBackdrop" class="modal-backdrop">
+    <div class="modal-content">
+      <h3 id="mTitle" style="font-size: 1.4rem; margin-bottom: 12px;"></h3>
+      <p id="mDesc" style="color: var(--text-secondary); margin-bottom: 20px; font-size: 0.95rem;"></p>
+      <div id="mPills" class="pills" style="margin-bottom: 24px;"></div>
+      <button onclick="closeModal()" class="btn-main" style="width: 100%; border: none; cursor: pointer;">Close Details</button>
+    </div>
+  </div>
+
+  <script>
+    const data = {
+      accounting: {
+        title: "Construction Accounting App",
+        desc: "A bilingual mobile application designed for construction contractors to log daily worker wages, track site material stock, and manage offline balance sheets backed by local SQLite persistence.",
+        pills: ["Flutter", "Dart", "Node.js", "Express", "SQLite"]
+      },
+      helmet: {
+        title: "Smart Security Helmet",
+        desc: "An IoT safety system integrating impact sensors, real-time location tracking, and automated emergency location dispatching via SMS/network alerts.",
+        pills: ["Embedded C", "Microcontrollers", "GPS", "GSM Module"]
+      }
+    };
+
+    function openModal(key) {
+      const p = data[key];
+      if (!p) return;
+
+      document.getElementById('mTitle').innerText = p.title;
+      document.getElementById('mDesc').innerText = p.desc;
+      
+      const container = document.getElementById('mPills');
+      container.innerHTML = '';
+      p.pills.forEach(pillText => {
+        const span = document.createElement('span');
+        span.className = 'pill';
+        span.innerText = pillText;
+        container.appendChild(span);
+      });
+
+      document.getElementById('modalBackdrop').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('modalBackdrop').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
